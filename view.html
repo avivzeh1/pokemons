@@ -1,0 +1,100 @@
+<!--אביב זכריה 313311797-->
+
+<html>
+
+    <head>
+          <!-- Required meta tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">  
+        <link rel="stylesheet" type="text/css" href="/assets/pokemon.css"/>  
+          <title> All pokemons </title>   
+    
+    </head>
+    
+<body >
+    <div id="pokemonName"></div>
+   
+    <script>
+
+   for(let i = 1; i < 152; i++){
+
+       fetch(`/api/pokemons/${i}`).then( res => res.json()).then(details => {
+    
+        var card = document.createElement('div')
+        var idName = document.createElement('div')
+        var id = document.createElement('div')
+        var name = document.createElement('div')
+        var pokemon = document.createElement('img');
+        var types = document.createElement('span')
+        var cont = document.createElement('div')  // container of id name and types 
+        
+        card.style.width = 400
+        card.style.height = 180
+        card.style.borderStyle = 'groove'
+        card.style.marginTop = 5
+        card.style.borderRadius = "15px"
+        card.style.borderColor = "black"
+        card.style.display = "flex"
+
+        if(details.type.length == 1){
+        card.classList.add(details.type[0]);
+      }else
+      card.classList.add(details.type[0] + "And" + details.type[1]);
+
+        var types = document.createElement('div')
+        types.style.display = "flex"
+        types.style.marginTop = 40
+
+        for(let i = 0; i < details.type.length; i++){  // add the pokemon types to types div
+            var type = document.createElement('div')
+            type.innerText = details.type[i]
+            type.classList.add('pokemon-type')
+            type.classList.add(details.type[i] + "Type")
+            types.appendChild(type);
+        }
+
+        id.innerText = `#${i}`       
+        id.style.fontSize = 20  
+        id.style.fontStyle = "italic"
+
+        name.innerText = `${details.name}` 
+        name.style.fontStyle = "italic"
+        name.style.fontSize = 22
+        name.style.font = "bold"
+        name.style.marginLeft = 20
+        name.onclick = function(){ goToProfile(i) }
+
+        pokemon.style.margin = 20
+        pokemon.setAttribute('width',120)
+        pokemon.setAttribute('height',120)
+        if(i < 10 && i > 0)
+             pokemon.src = `/assets/images/00${i}.png`
+        else if(i > 9 && i < 100)
+             pokemon.src = `/assets/images/0${i}.png`
+        else if(i > 99 && i < 152)
+             pokemon.src = `/assets/images/${i}.png`
+        pokemon.onclick = function(){ goToProfile(i) }
+
+        card.appendChild(pokemon)
+        idName.appendChild(id)
+        idName.appendChild(name)
+
+        idName.style.marginTop = 40
+        idName.style.marginLeft = 20
+        idName.style.display = "flex"
+        idName.style.height = "fit-content"
+        cont.appendChild(idName)
+        cont.appendChild(types)
+        card.appendChild(cont)      
+       document.body.appendChild(card);
+
+    })
+     }
+function goToProfile(p){
+    location.href = `/pokemons/${p}`
+ }
+        
+    </script>
+       
+  </body>
+</html>

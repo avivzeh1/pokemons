@@ -1,0 +1,58 @@
+
+            table, th {
+                background-color: #ffee00;
+                border-style: groove;
+                border-collapse: collapse;
+                border-color: black;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-style:italic ;               
+                padding: 20;
+                
+                }
+                .pokemon-type{
+                    padding: 7;               
+                    border-radius: 5px;
+                    width: 90;
+                    text-align: center;
+                    margin-right: 5;
+                    font-size: large;
+                    font-family:Verdana, Geneva, Tahoma, sans-serif;
+                    font-style:italic ;
+                }
+                .type{
+                    border-style: groove;
+                    border-color: black;
+                    color: black;  
+                }
+                .Grass, .Bug{
+                    background: greenyellow;              
+                }
+                .Poison, .Psychic, .Fairy{
+                    background: plum;               
+                }
+                .Fire{
+                    background: orange;              
+                }
+                .Water, .Ice, .Flying{
+                    background: turquoise;               
+                }
+                .Rock{
+                    background: rgb(163, 163, 163);             
+                }
+                .Ground{
+                    background: goldenrod;
+                }
+                .Fighting{
+                    background: rgb(255, 80, 80);
+                }
+                .Normal{
+                    background: wheat;
+                }
+                #container{
+                    margin-left: 60;
+                    margin-top: 50;
+                    width: fit-content;
+                    border-style: groove;
+                    border-color: black;
+                    border-radius: 10px;
+                }

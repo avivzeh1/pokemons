@@ -1,0 +1,125 @@
+<!--אביב זכריה 313311797-->
+
+<html>
+<head>
+      <!-- Required meta tags -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/pokemon.css"/>   
+
+      <title> pokemon </title>   
+
+</head>
+
+<body >
+  <div id="content" style="margin-left: 100; width: fit-content;">
+  <h2 style="margin-top: 20; text-align: center; ">Pokedex</h2>
+  <p style="font-size: 18; text-align: center; "> Here you can explore all the<br>
+     pokemons from all types</p>
+
+     <div id="wrapper">
+
+      <button onclick="location.href='/pokemons'" type="button" style="width: 150; height: 30; ">
+        View all pokemons</button>
+      </div>
+
+<h2 style="text-align: center;">Top pokemons</h2> 
+</div>
+
+
+<script>
+
+ var popularity
+ 
+ fetch('/popularity') // ask for popularity information
+ .then(res => res.json())
+ .then( data => {
+   
+ var pokemon1 = 0
+ var pokemon2 = 0
+ var pokemon3 = 0
+
+ for(let j = 0; j < 3; j++){  // find the top 3 popular pokemons
+   var max = data.pop[0]
+   var maxId = 0
+   for(let i = 0; i < data.pop.length; i++){  // find top 3
+      if(max < data.pop[i]){
+        max = data.pop[i];
+        maxId = i
+      }
+    }
+ data.pop[maxId] = -1; // remove the current max popular
+ switch(j){
+   case 0: pokemon1 = maxId + 1; // most popular
+   break;
+   case 1: pokemon2 = maxId + 1;  // second 
+   break;
+   case 2: pokemon3 = maxId + 1; //third
+   break;
+   default: break;
+ }
+}
+
+    fetch(`/api/pokemons/${pokemon1}`).then( res => res.json()).then(details => {
+    
+        makeCard(pokemon1,data,details)
+
+    })
+    
+
+      fetch(`/api/pokemons/${pokemon2}`).then( res => res.json()).then(details => {
+    
+     makeCard(pokemon2,data,details)
+
+    })
+
+
+    fetch(`/api/pokemons/${pokemon3}`).then( res => res.json()).then(details => {
+    
+     makeCard(pokemon3,data,details)
+
+       })
+ })
+
+ function makeCard(p ,data,details){
+
+      var card = document.createElement('div')
+      var name = document.createElement('div')
+      var pokemon = document.createElement('img');
+      card.classList.add("card")
+
+      if(details.type.length == 1){
+        card.classList.add(details.type[0]);
+      }else
+      card.classList.add(details.type[0] + "And" + details.type[1]);
+            
+
+      name.innerText = `${details.name}` 
+      name.className = "name"
+      name.onclick = function(){ goToProfile(p) }
+      pokemon.style.margin = 20
+      pokemon.setAttribute('width',120)
+      pokemon.setAttribute('height',120)
+  
+        if(p < 10 && p > 0)
+             pokemon.src = `/assets/images/00${p}.png`
+        else if(p > 9 && p < 100)
+             pokemon.src = `/assets/images/0${p}.png`
+        else if(p > 99 && p < 152)
+             pokemon.src = `/assets/images/${p}.png`
+
+      pokemon.onclick = function(){ goToProfile(p) }
+ 
+      card.appendChild(pokemon)
+      card.appendChild(name)    
+      document.getElementById("content").appendChild(card);
+}
+ function goToProfile(id){
+    location.href = `/pokemons/${id}`
+ }
+</script>
+
+
+</body>
+</html>

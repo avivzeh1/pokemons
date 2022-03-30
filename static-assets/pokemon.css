@@ -1,0 +1,166 @@
+.card{
+
+    width: 300;
+    height: 150;
+    border-style: groove;
+    border-color: black;
+    background: linear-gradient(to right, red, orange);
+    border-radius: 15px;
+    margin-top:5;
+    display: flex;
+    
+} 
+
+.name{
+  font-style: italic;
+  font-size: 22;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 15;
+ margin-top: 40;
+}
+
+.pokemon-type{
+  padding: 7;               
+  border-radius: 5px;
+  width: 90;
+  text-align: center;
+  margin-right: 5;
+  font-size: large;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-style:italic ;
+  height: fit-content;
+  border-style: groove;
+  border-color: black;
+  color: black;  
+}
+.GrassType, .BugType{
+  background: greenyellow;              
+}
+.PoisonType, .PsychicType, .FairyType{
+  background: plum;               
+}
+.GhostType{
+  background: purple; 
+}
+.FireType, .DragonType{
+  background: orange;              
+}
+.WaterType, .IceType, .FlyingType{
+  background: turquoise;               
+}
+.RockType{
+  background: rgb(163, 163, 163);             
+}
+.GroundType{
+  background: goldenrod;
+}
+.SteelType{
+  background: rgb(155, 155, 155);
+}
+.FightingType{
+  background: rgb(255, 80, 80);
+}
+.ElectricType{
+  background: yellow;
+  
+}
+.NormalType{
+  background: wheat;
+}
+
+.Grass, .Bug, .BugAndGrass{
+  background: linear-gradient(to right, green, greenyellow);              
+}
+.GrassAndPoison, .BugAndPoison, .GrassAndPsychic{
+background: linear-gradient(to right, palevioletred, green);
+}
+.BugAndFlying{
+background: linear-gradient(to right, green, rgb(4, 144, 238));  
+}
+.Fairy{
+  background: linear-gradient(to right, palevioletred, rgb(255, 175, 175));               
+}
+.Psychic{
+background: linear-gradient(to right, purple, yellow);
+}
+.Poison, .GhostAndPoison, .PsychicAndFairy{
+background: linear-gradient(to right, purple, pink);
+}
+.PoisonAndGround{
+background: linear-gradient(to right, purple, gold);
+}
+
+.Fire{
+  background: linear-gradient(to right, red, rgb(255, 208, 1));              
+}
+.FireAndFlying, .DragonAndFlying, .Dragon{
+  background: linear-gradient(to right, turquoise, orange);  
+}
+.NormalAndFlying{
+  background: linear-gradient(to right,turquoise, wheat);  
+}
+.NormalAndFairy{
+  background: linear-gradient(to right,plum, wheat);  
+}
+.ElectricAndSteel{
+  background: linear-gradient(to right,rgb(155, 155, 155), yellow); 
+}
+.ElectricAndFlying{
+  background: linear-gradient(to right,turquoise, yellow); 
+}
+.Water, .Ice, .Flying, .WaterAndIce, .WaterAndFlying, .IceAndFlying{
+  background: linear-gradient(to right, blue, turquoise);               
+}
+
+.WaterAndPoison, .PoisonAndFlying, .WaterAndPsychic, .IceAndPsychic{
+  background: linear-gradient(to right, purple, turquoise);
+}
+.WaterAndFighting{
+  background: linear-gradient(to right, red, turquoise);
+}
+.RockAndGround, .GroundAndRock{
+  background: linear-gradient(to right,rgb(172, 102, 23), gray);             
+}
+.RockAndWater, .RockAndFlying{
+  background: linear-gradient(to right,blue, gray); 
+}
+.Ground{
+  background: linear-gradient(to right, gold, rgb(172, 102, 23));
+}
+.Fighting{
+  background: linear-gradient(to right, red, white);
+}
+.Electric{
+background: linear-gradient(to right, yellow, black);
+}
+.Normal{
+background: linear-gradient(to right, black, rgb(255, 175, 175));
+}
+
+#wrapper {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+#container{
+  margin-left: 60;
+  margin-top: 50;
+  width: fit-content;
+  border-style: groove;
+  border-color: black;
+  border-radius: 10px;
+}
+
+table, th {
+  background-color: #ffee00;
+  border-style: groove;
+  border-collapse: collapse;
+  border-color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style:italic ;               
+  padding: 20;
+  
+  }

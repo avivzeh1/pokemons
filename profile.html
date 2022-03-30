@@ -1,0 +1,88 @@
+<!--אביב זכריה 313311797-->
+
+<html>
+    <head>
+          <!-- Required meta tags -->
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">  
+        <link rel="stylesheet" type="text/css" href="/assets/pokemon.css"/>
+          <title >  </title>   
+    
+    </head>
+    
+    <body >
+        <div id="container" >
+            <h1 id="idName" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-style: italic; margin-left: 20; color: black; "></h1>
+            <div style="margin-bottom: 10;">
+            <img id="pokemonImg" style="width: 200; height: 200; margin-left: 100;"/>
+            </div>
+            <div id="types" style="display: flex; margin-bottom: 10; margin-left: 20;">
+
+            </div>
+            <table style="width:50%; margin-bottom: 20; margin-left: 20;">
+                <tr>
+                    <th>HP</th>
+                    <th>Attack</th>
+                    <th>Defense</th>
+                    <th>Sp. Attack</th>
+                    <th>Sp. Defense</th>
+                    <th>Speed</th>
+                </tr>
+                <tr>
+                    <th id="hp"></th>
+                    <th id="attack"></th>
+                    <th id="defense"></th>
+                    <th id="spDefense"></th>
+                    <th id="spAttack"></th>
+                    <th id="speed"></th>
+                </tr>
+            </table>
+
+        </div>
+    <script>
+ 
+var myUrl = document.URL;
+id = myUrl.split('/')[4]
+
+
+fetch(`/api/pokemons/${id}.png`).then( res => res.json()).then(details => {
+        
+        document.title = details.name
+        var con = document.getElementById("container")
+        if(details.type.length == 1){
+            con.classList.add(details.type[0]);
+      }else
+      con.classList.add(details.type[0] + "And" + details.type[1]);
+
+        document.getElementById("idName").innerText = `#${details.id} ${details.name}`
+        for(let i = 0; i < details.type.length; i++){
+            var type = document.createElement('div')
+            type.innerText = details.type[i]
+            type.classList.add('pokemon-type')
+            type.classList.add(details.type[i] + "Type")
+            document.getElementById('types').appendChild(type);
+        }
+
+        document.getElementById("hp").innerText = details.base.HP;
+        document.getElementById("attack").innerText = details.base.Attack;
+        document.getElementById("defense").innerText = details.base.Defense;
+        document.getElementById("spDefense").innerText = details.base["Sp. Attack"]
+        document.getElementById("spAttack").innerText = details.base["Sp. Defense"]
+        document.getElementById("speed").innerText = details.base.Speed
+  
+       var pokemon = document.getElementById('pokemonImg');
+       if(id < 10 && id > 0)
+             pokemon.src = `/assets/images/00${id}.png`
+        else if(id > 9 && id< 100)
+             pokemon.src = `/assets/images/0${id}.png`
+        else if(id > 99 && id < 152)
+             pokemon.src = `/assets/images/${id}.png`
+
+     });
+    
+    </script>
+    
+    
+    </body>
+    </html>
